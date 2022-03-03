@@ -1,18 +1,28 @@
 package shape
 
+import "math"
+
+type Shape interface {
+	Area() float64
+}
+
 type Rectangle struct {
 	Width  float64
 	Height float64
+}
+
+func (r Rectangle) Area() float64 {
+	return r.Width * r.Height
 }
 
 type Circle struct {
 	Radius float64
 }
 
-func Perimeter(rectangel Rectangle) float64 {
-	return 2 * (rectangel.Width + rectangel.Height)
+func (c Circle) Area() float64 {
+	return math.Pi * c.Radius * c.Radius
 }
 
-func Area(rectangel Rectangle) float64 {
-	return rectangel.Width * rectangel.Height
+func Perimeter(rectangel Rectangle) float64 {
+	return 2 * (rectangel.Width + rectangel.Height)
 }
